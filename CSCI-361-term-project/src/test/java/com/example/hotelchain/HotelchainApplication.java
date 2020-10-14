@@ -1,4 +1,4 @@
-package com.hedgehogs.hotelchain;
+package com.example.hotelchain;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
