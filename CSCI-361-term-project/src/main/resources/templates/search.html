@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<style>
+table, th, td {
+  border: 1px solid black;
+}
+</style>
+</head>
+
+<body>
+<h2>Search Available rooms</h2>
+<p>Click on the button to open the dropdown menu, and use the input field to search for a specific available room.</p>
+
+<label for="browser">Country:</label>
+<input list="country" id="myCountry" onchange="getCityList()">
+<datalist id="country">
+</datalist>  
+
+<label for="browser">City:</label>
+<input list="city" id="myCity">
+<datalist id="city">
+</datalist> 
+
+<label for="browser">From:</label>
+  <input type="date" id="from-date">
+  
+<label for="browser">To:</label>
+  <input type="date" id="to-date">
+
+<input type="submit" value="Search" id="search" onclick="availableRooms()">
+
+<br> <br>
+<label for="browser">Available rooms:</label>
+<br>
+<table style="width:80%" id="my-list"></table>
+
+<script>
+
+function updateList(items, tag) {
+    $(tag).html("");
+//    $(tag).append("<option value=\"Default\">");
+    items.forEach(function (e) { 
+        $(tag).append("<option value=\""+e+"\">");
+    });
+}
+
+function availableRooms() {
+	var myUrl = "search/available";
+	var country = document.getElementById("myCountry").value;
+	var city = document.getElementById("myCity").value;
+	if (country != "") {
+		myUrl = myUrl+"?country="+country;
+		if (city != "")
+			myUrl = myUrl+"&city="+city;
+	} else {
+		if (city != "")
+			myUrl = myUrl+"?city="+city;
+	}
+		
+	
+	$.ajax({
+        url : myUrl,
+        dataType : 'json',
+        success : function(r) {
+        	$("#my-list").html("");
+        	$("#my-list").append("<tr><th>Country</th><th>City</th><th>Room Number</th><th>Capacity</th></tr>");
+        	  
+        	r.forEach(function (e) { 
+        		$("#my-list").append("<tr><td>"+e.hotel.country+"</td><td>"+e.hotel.city+
+        				"</td><td>"+e.roomNumber+"</td><td>"+e.capacity+"</td></td>");
+          });
+        }
+    });
+    
+}
+
+function getCountryList() {
+    $.ajax({
+        url : 'search/countries',
+        dataType : 'json',
+        success : function(r) {
+            updateList(r, "#country");
+        }
+    });
+}
+
+function getCityList() {
+	var country = document.getElementById("myCountry").value;
+	var myUrl;
+	if (country == "")
+		myUrl = 'search/cities';
+	else 
+		myUrl = 'search/cities?country='+country;
+    $.ajax({
+        url : myUrl,
+        dataType : 'json',
+        success : function(r) {
+            updateList(r, "#city");
+        }
+    });
+}
+
+$(document).ready(function () { 
+	getCountryList();
+	getCityList();
+	availableRooms();
+
+});
+</script>
+
+</body>
+</html>
