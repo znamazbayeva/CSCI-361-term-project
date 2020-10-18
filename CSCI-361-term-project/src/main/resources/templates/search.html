@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <style>
-table, th, td {
+table {
   border: 1px solid black;
 }
 </style>
@@ -17,16 +17,16 @@ table, th, td {
 <label for="browser">Country:</label>
 <input list="country" id="myCountry" onchange="getCityList()">
 <datalist id="country">
-</datalist>  
+</datalist>
 
 <label for="browser">City:</label>
 <input list="city" id="myCity">
 <datalist id="city">
-</datalist> 
+</datalist>
 
 <label for="browser">From:</label>
   <input type="date" id="from-date">
-  
+
 <label for="browser">To:</label>
   <input type="date" id="to-date">
 
@@ -35,14 +35,14 @@ table, th, td {
 <br> <br>
 <label for="browser">Available rooms:</label>
 <br>
-<table style="width:80%" id="my-list"></table>
+<table style="width:50%" id="my-list"></table>
 
 <script>
 
 function updateList(items, tag) {
     $(tag).html("");
 //    $(tag).append("<option value=\"Default\">");
-    items.forEach(function (e) { 
+    items.forEach(function (e) {
         $(tag).append("<option value=\""+e+"\">");
     });
 }
@@ -59,22 +59,23 @@ function availableRooms() {
 		if (city != "")
 			myUrl = myUrl+"?city="+city;
 	}
-		
-	
+
+
 	$.ajax({
         url : myUrl,
         dataType : 'json',
         success : function(r) {
         	$("#my-list").html("");
         	$("#my-list").append("<tr><th>Country</th><th>City</th><th>Room Number</th><th>Capacity</th></tr>");
-        	  
-        	r.forEach(function (e) { 
+
+        	r.forEach(function (e) {
         		$("#my-list").append("<tr><td>"+e.hotel.country+"</td><td>"+e.hotel.city+
-        				"</td><td>"+e.roomNumber+"</td><td>"+e.capacity+"</td></td>");
+        				"</td><td>"+e.roomNumber+"</td><td>"+e.capacity+"</td><td><a href=\"#\"><button type=\"button\">"+
+        				"Book"+"</button></a></td></tr>");
           });
         }
     });
-    
+
 }
 
 function getCountryList() {
@@ -92,7 +93,7 @@ function getCityList() {
 	var myUrl;
 	if (country == "")
 		myUrl = 'search/cities';
-	else 
+	else
 		myUrl = 'search/cities?country='+country;
     $.ajax({
         url : myUrl,
@@ -103,7 +104,7 @@ function getCityList() {
     });
 }
 
-$(document).ready(function () { 
+$(document).ready(function () {
 	getCountryList();
 	getCityList();
 	availableRooms();
