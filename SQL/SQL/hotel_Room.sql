@@ -35,7 +35,7 @@ CREATE TABLE `Room` (
   KEY `fk_Room_Room Type1_idx` (`RoomTypeName`,`HotelID`),
   CONSTRAINT `fk_Room_CleaningStaff1` FOREIGN KEY (`CleaningStaffID`) REFERENCES `CleaningStaff` (`EmployeeID`),
   CONSTRAINT `fk_Room_Room Type1` FOREIGN KEY (`RoomTypeName`, `HotelID`) REFERENCES `Room Type` (`RoomTypeName`, `hotel_HotelID`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -44,6 +44,7 @@ CREATE TABLE `Room` (
 
 LOCK TABLES `Room` WRITE;
 /*!40000 ALTER TABLE `Room` DISABLE KEYS */;
+INSERT INTO `Room` VALUES (1,'1',7,'Clean','Single',111,1),(2,'1',10,'Clean','Double',111,1),(3,'1',7,'Clean','Quad',111,1),(4,'1',11,'Clean','Studio',111,1),(5,'1',7,'Clean','Triple',111,1),(6,'1',10,'Clean','Twin',111,1);
 /*!40000 ALTER TABLE `Room` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -56,4 +57,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-10-19 14:20:16
+-- Dump completed on 2020-10-19 16:00:46
