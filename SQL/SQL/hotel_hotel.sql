@@ -27,6 +27,7 @@ CREATE TABLE `hotel` (
   `HotelName` varchar(45) NOT NULL,
   `HotelPhoneNumber` varchar(45) NOT NULL,
   `HotelCountryCode` varchar(20) NOT NULL,
+  `HotelCountry` varchar(45) NOT NULL,
   `HotelCity` varchar(45) NOT NULL,
   `HotelStreet` varchar(45) NOT NULL,
   PRIMARY KEY (`HotelID`)
@@ -39,7 +40,7 @@ CREATE TABLE `hotel` (
 
 LOCK TABLES `hotel` WRITE;
 /*!40000 ALTER TABLE `hotel` DISABLE KEYS */;
-INSERT INTO `hotel` VALUES (111,'Zhuldyz','7075533442','+7','Almaty','Shalyapin, 65'),(112,'Kamilla','7075566335','+7','Nur-Sultan','Kabanbay, 56'),(113,'Amina','7036564827','+7','Almaty','Nazarbayev, 56'),(114,'Gulnaz','7046435683','+7','Nur-Sultan','Dostyq, 46'),(115,'Altynay','7946763726','+7','Almaty','Zhurgenev, 34');
+INSERT INTO `hotel` VALUES (111,'Zhuldyz','7075533442','+7','Kazakhstan','Almaty','Shalyapin, 65'),(112,'Kamilla','7075566335','+7','Kazakhstan','Nur-Sultan','Kabanbay, 56'),(113,'Amina','7036564827','+7','Kazakhstan','Almaty','Nazarbayev, 56'),(114,'Gulnaz','7046435683','+7','USA','New York','Dostyq, 46'),(115,'Altynay','7946763726','+7','UK','London','Zhurgenev, 34');
 /*!40000 ALTER TABLE `hotel` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
