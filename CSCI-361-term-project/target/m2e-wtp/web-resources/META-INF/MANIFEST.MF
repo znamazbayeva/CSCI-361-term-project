@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
-Implementation-Title: demo
+Build-Jdk-Spec: 14
+Implementation-Title: CSCI-361-term-project
 Implementation-Version: 0.0.1-SNAPSHOT
-Build-Jdk-Spec: 1.8
 Created-By: Maven Integration for Eclipse
 

@@ -1,5 +1,7 @@
-package com.example.web.controllers;
+package com.example.demo.controllers;
 
+import java.sql.Date;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -11,10 +13,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.example.web.data.Hotel;
-import com.example.web.data.HotelRepository;
-import com.example.web.data.Room;
-import com.example.web.data.RoomRepository;
+import com.example.demo.data.BookingRepository;
+import com.example.demo.data.Hotel;
+import com.example.demo.data.HotelRepository;
+import com.example.demo.data.Room;
+import com.example.demo.data.RoomRepository;
 
 @Controller // This means that this class is a Controller
 @RequestMapping(path="/search") // This means URL's start with /search (after Application path)
@@ -25,6 +28,9 @@ public class SearchController {
   private HotelRepository hotelRepository;
   @Autowired
   private RoomRepository roomRepository;
+  
+  @Autowired
+  private BookingRepository bookingRepository;
 
   @GetMapping(path="/all")
   public @ResponseBody Iterable<Hotel> getAllUsers() {
@@ -48,10 +54,17 @@ public class SearchController {
 	}
   }
 
-  @GetMapping(path="/available")
+@GetMapping(path="/available")
   public @ResponseBody Iterable<Room> getAvailableRooms(@RequestParam(value = "city", required=false) String city,
-		  @RequestParam(value = "country", required = false) String country) {
-	  return roomRepository.findRoomsOrderByHotel(country, city);
+		  @RequestParam(value = "country", required = false) String country, @RequestParam(value = "from", required=false) String from,
+		  @RequestParam(value = "to", required = false) String to) {
+	Set<Integer> roomID = roomRepository.findAllRoomID();
+	if (from != null && to != null) {
+		Date fromD = Date.valueOf(from);
+		Date toD = Date.valueOf(to);
+		roomID = bookingRepository.findAvailableRoomID(fromD, toD);
+	}
+	  return roomRepository.findRoomsOrderByHotel(country, city, roomID);
   }
 
 }

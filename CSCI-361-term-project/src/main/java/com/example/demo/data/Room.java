@@ -1,4 +1,4 @@
-package com.example.web.data;
+package com.example.demo.data;
 
 import java.io.Serializable;
 
