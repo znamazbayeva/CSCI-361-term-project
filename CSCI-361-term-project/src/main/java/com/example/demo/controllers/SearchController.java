@@ -67,4 +67,21 @@ public class SearchController {
 	  return roomRepository.findRoomsOrderByHotel(country, city, roomID);
   }
 
+//@RequestMapping("/hotel/{id: [0-9]+}")
+//public String welcome() {
+//    return "bookingpage";
+//}
+
+@RequestMapping("/hotel")
+public String hotelbookingpage() {
+    return "bookingpage";
 }
+
+}
+
+//@RequestMapping("/bookingform")
+//public String bookingformpage() {
+//    return "bookingform";
+//}
+
+
