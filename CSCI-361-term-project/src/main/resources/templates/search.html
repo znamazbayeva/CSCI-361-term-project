@@ -75,9 +75,14 @@ function availableRooms() {
 
         	r.forEach(function (e) {
         		$("#my-list").append("<tr><td>"+e.hotel.country+"</td><td>"+e.hotel.city+
-        				"</td><td>"+e.roomNumber+"</td><td>"+e.capacity+"</td><td><a href=\"#\"><button type=\"button\">"+
-        				"Book"+"</button></a></td></tr>");
-          });
+        				"</td><td>"+e.roomNumber+"</td><td>"+e.capacity+"</td><td><a href=\"search\\hotel\"><button type=\"button\">"+
+        				"Book"+"</button></a></td></tr>"); 
+/*         		$("#my-list").append("<tr><td>"+e.hotel.country+"</td><td>"+e.hotel.city+
+        				"</td><td>"+e.roomNumber+"</td><td>"+e.capacity+"</td><td><a href=\"search\\hotel\\"+e.hotel.id+"\"><button type=\"button\">"+
+        				"Book"+"</button></a></td></tr>");  <--with id */
+        	
+          }); 
+
         }
     });
 
@@ -92,6 +97,18 @@ function getCountryList() {
         }
     });
 }
+
+function bookHotel(index) {
+
+	$.ajax({
+		url : 'search/hotel/',
+		dataType : 'json',
+		success : function(r) {
+		//	updateList(r);
+		}
+	});
+} 
+
 
 function getCityList() {
 	var country = document.getElementById("myCountry").value;
@@ -113,6 +130,13 @@ $(document).ready(function () {
 	getCountryList();
 	getCityList();
 	availableRooms();
+
+ 		$("#my-list").on('click','.bookhotel', function() {
+			var index = $(this).attr('id');
+			 var window = window.open("https://www.google.com", "_blank");
+		      window.focus();
+		});  
+
 
 });
 </script>
