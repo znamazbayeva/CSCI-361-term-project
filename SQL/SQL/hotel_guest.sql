@@ -42,6 +42,9 @@ CREATE TABLE `guest` (
 LOCK TABLES `guest` WRITE;
 /*!40000 ALTER TABLE `guest` DISABLE KEYS */;
 INSERT INTO `guest` VALUES (10000,'Donald','Trump','donaldtrump@gmail.com','7073475683','makeamericagreatagain',NULL,'+7'),(10001,'Barack ','Obama','barackobama@gmail.com','7077362472','zhulbern',NULL,'+2'),(10002,'Lindsey','Lohan','lindseylohan@gmail.com','7072473882','lindsey007',NULL,'+6'),(10003,'Margaret','Tatcher','margarettatcher@gmail.com','7027253849','maragarate',NULL,'+7'),(10004,'Demi','Lovato','demilovato@gmail.com','2358529297','demiiiii',NULL,'+7'),(10005,'Steve','Jobs','stevejobs@gmail.com','2357286732','steveaoki',NULL,'+7'),(10006,'Aooki','Steven','aookisteven@gmail.com','2358792823','aookisteve',NULL,'+4');
+(10007,'Ariana','Grande','arriii@gmail.com','2350092823','arriii',NULL,'+4');
+(10008,'Shawn','Mendes','shawnmendes@gmail.com','2358791111','shawnmm',NULL,'+3');
+(10009,'Bruno','Mars','brunomars@gmail.com','0123792823','brunomars',NULL,'+1');
 /*!40000 ALTER TABLE `guest` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
