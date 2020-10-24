@@ -37,7 +37,7 @@ CREATE TABLE `administrative_staff` (
 
 LOCK TABLES `administrative_staff` WRITE;
 /*!40000 ALTER TABLE `administrative_staff` DISABLE KEYS */;
-INSERT INTO `administrative_staff` VALUES (1),(2),(3),(4),(5),(8),(9),(10),(11);
+INSERT INTO `administrative_staff` VALUES (1),(2),(3),(4),(5),(8),(9),(10),(11),(12),(13),(14);
 /*!40000 ALTER TABLE `administrative_staff` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -64,6 +64,8 @@ CREATE TABLE `bills` (
 LOCK TABLES `bills` WRITE;
 /*!40000 ALTER TABLE `bills` DISABLE KEYS */;
 INSERT INTO `bills` VALUES ('25000', '10000'),('12000', '10001'),('10000', '10001');
+INSERT INTO `bills` VALUES ('22000', '10001'),('13000', '10000'),('17000', '10001');
+
 /*!40000 ALTER TABLE `bills` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -93,7 +95,8 @@ CREATE TABLE `booking` (
 
 LOCK TABLES `booking` WRITE;
 /*!40000 ALTER TABLE `booking` DISABLE KEYS */;
-INSERT INTO `booking` VALUES (1,'2020-02-20 20:00:00','2020-02-20 20:00:00','2020-02-30 20:00:00',10,10000),(2,'2020-07-20 20:00:00','2020-07-20 20:00:00','2020-07-26 20:00:00',6,10001),(3,'2020-03-20 19:00:00','2020-08-20 19:00:00','2020-08-25 19:00:00',5,10002),(4,'2020-01-20 20:00:00','2020-01-20 20:00:00','2020-02-17 20:00:00',28,10004),(5,'2020-05-20 20:00:00','2020-05-20 20:00:00','2020-06-14 20:00:00',25,10005),(6,'2020-05-20 20:00:00','2020-05-20 20:00:00','2020-05-25 20:00:00',5,10006),(7,'2020-08-20 20:00:00','2020-08-20 20:00:00','2020-08-25 20:00:00',5,10000),(8,'2020-10-20 20:00:00','2020-10-20 20:00:00','2020-10-23 20:00:00',3,10001),(9,'2020-10-25 20:00:00','2020-10-25 20:00:00','2020-11-01 20:00:00',7,10000),(10,'2020-10-25 20:00:00','2020-10-27 20:00:00','2020-11-05 20:00:00',9,10001),(11,'2020-10-25 20:00:00','2020-11-01 20:00:00','2020-11-07 20:00:00',7,10002);
+INSERT INTO `booking` VALUES (1,'2020-02-20 20:00:00','2020-02-20 20:00:00','2020-02-30 20:00:00',10,10000),(2,'2020-07-20 20:00:00','2020-07-20 20:00:00','2020-07-26 20:00:00',6,10001),(3,'2020-03-20 19:00:00','2020-08-20 19:00:00','2020-08-25 19:00:00',5,10002),(4,'2020-01-20 20:00:00','2020-01-20 20:00:00','2020-02-17 20:00:00',28,10004),(5,'2020-05-20 20:00:00','2020-05-20 20:00:00','2020-06-14 20:00:00',25,10005),(6,'2020-05-20 20:00:00','2020-05-20 20:00:00','2020-05-25 20:00:00',5,10006),(7,'2020-08-20 20:00:00','2020-08-20 20:00:00','2020-08-25 20:00:00',5,10000),(8,'2020-10-20 20:00:00','2020-10-20 20:00:00','2020-10-23 20:00:00',3,10001),(9,'2020-10-25 20:00:00','2020-10-25 20:00:00','2020-11-01 20:00:00',7,10000),(10,'2020-10-25 20:00:00','2020-10-27 20:00:00','2020-11-05 20:00:00',9,10001),(11,'2020-10-25 20:00:00','2020-11-01 20:00:00','2020-11-07 20:00:00',7,10002),(12,'2020-10-25 20:00:00','2020-11-07 20:00:00','2020-11-17 20:00:00',6,10001);
+
 /*!40000 ALTER TABLE `booking` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -146,7 +149,7 @@ CREATE TABLE `employee` (
 
 LOCK TABLES `employee` WRITE;
 /*!40000 ALTER TABLE `employee` DISABLE KEYS */;
-INSERT INTO `employee` VALUES (1,'Zhuldyz','zhuldyz@gmail.com','87075566453',6),(2,'Amina','amina@gmail.com','87075566543',9),(3,'Kamilla','kamilla@gmail.com','87073456275',9),(4,'Justin','justin@gmail.com','87035622673',9),(5,'Ariana','ariana@gmail.com','87074276323',6),(6,'Altynay','Altynay@gmail.com','87073264572',6),(7,'Lyubov','lybov@gmail.com','87072364272',6),(8,'Zhurek','zhurek@gmail.com','87072634562',6),(9,'Gulnar','gulnar@gmail.com','87072736472',9),(10,'Kymbat','kymbat@gmail.com','87072364527',6),(11,'Qarashash','qarashash@gmail.com','87072734682',6),(12,'Gulnaz','zhambylova25@gmail.com','87075566500',8),(13,'Joanna','joanna@gmail.com','87075566000',8),(14,'Selena','selena@gmail.com','87075566511',8);
+INSERT INTO `employee` VALUES (1,'Zhuldyz','zhuldyz@gmail.com','87075566453',6),(2,'Amina','amina@gmail.com','87075566543',9),(3,'Kamilla','kamilla@gmail.com','87073456275',9),(4,'Justin','justin@gmail.com','87035622673',9),(5,'Ariana','ariana@gmail.com','87074276323',6),(6,'Altynay','Altynay@gmail.com','87073264572',6),(7,'Lyubov','lybov@gmail.com','87072364272',6),(8,'Zhurek','zhurek@gmail.com','87072634562',6),(9,'Gulnar','gulnar@gmail.com','87072736472',9),(10,'Kymbat','kymbat@gmail.com','87072364527',6),(11,'Qarashash','qarashash@gmail.com','87072734682',6),(12,'Gulnaz','zhambylova25@gmail.com','87075566500',8),(13,'Joanna','joanna@gmail.com','87075566000',8),(14,'Selena','selena@gmail.com','87075566511',8),(15,'Aidana','aidana@gmail.com','87075566546',9),(16,'Milana','milana@gmail.com','87775566543',9),(17,'Ira','ira@gmail.com','87075596543',9);
 /*!40000 ALTER TABLE `employee` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -176,7 +179,7 @@ CREATE TABLE `guest` (
 
 LOCK TABLES `guest` WRITE;
 /*!40000 ALTER TABLE `guest` DISABLE KEYS */;
-INSERT INTO `guest` VALUES (10000,'Donald','Trump','donaldtrump@gmail.com','7073475683','makeamericagreatagain',NULL,NULL),(10001,'Barack ','Obama','barackobama@gmail.com','7077362472','zhulbern',NULL,'VIP'),(10002,'Lindsey','Lohan','lindseylohan@gmail.com','7072473882','lindsey007',NULL,'VIP'),(10003,'Margaret','Tatcher','margarettatcher@gmail.com','7027253849','maragarate',NULL,NULL),(10004,'Demi','Lovato','demilovato@gmail.com','2358529297','demiiiii',NULL,NULL),(10005,'Steve','Jobs','stevejobs@gmail.com','2357286732','steveaoki',NULL,NULL),(10006,'Aooki','Steven','aookisteven@gmail.com','2358792823','aookisteve',NULL,NULL),(10007,'Miras','Lohan','miraslohan@gmail.com','7072473882','miraslohan',NULL,'VIP'),(10008,'Lindsey','Steven','lindseysteven@gmail.com','7072473882','lindseysteven',NULL,NULL),(10009,'Jonas','Joe','jonasjoe@gmail.com','7072473882','jonasjoe',NULL,NULL);
+INSERT INTO `guest` VALUES (10000,'Donald','Trump','donaldtrump@gmail.com','7073475683','makeamericagreatagain',NULL,NULL),(10001,'Barack ','Obama','barackobama@gmail.com','7077362472','zhulbern',NULL,'VIP'),(10002,'Lindsey','Lohan','lindseylohan@gmail.com','7072473882','lindsey007',NULL,'VIP'),(10003,'Margaret','Tatcher','margarettatcher@gmail.com','7027253849','maragarate',NULL,NULL),(10004,'Demi','Lovato','demilovato@gmail.com','2358529297','demiiiii',NULL,NULL),(10005,'Steve','Jobs','stevejobs@gmail.com','2357286732','steveaoki',NULL,NULL),(10006,'Aooki','Steven','aookisteven@gmail.com','2358792823','aookisteve',NULL,NULL),(10007,'Miras','Lohan','miraslohan@gmail.com','7072473882','miraslohan',NULL,'VIP'),(10008,'Lindsey','Steven','lindseysteven@gmail.com','7072473882','lindseysteven',NULL,NULL),(10009,'Jonas','Joe','jonasjoe@gmail.com','7072473882','jonasjoe',NULL,NULL),(10010,'Steve','Shirley','steveshirley@gmail.com','7072973882','steveshirley',NULL,NULL),(10011,'Robert','Cailliau','robertcailliau@gmail.com','7772473882','robertcailliau',NULL,NULL),(10009,'Grace','Hopper','gracehopper@gmail.com','7076773882','gracehopper',NULL,NULL);
 /*!40000 ALTER TABLE `guest` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -204,7 +207,7 @@ CREATE TABLE `hotel` (
 
 LOCK TABLES `hotel` WRITE;
 /*!40000 ALTER TABLE `hotel` DISABLE KEYS */;
-INSERT INTO `hotel` VALUES (111,'Zhuldyz','+7','Almaty','Shalyapin, 65','Kazakhstan'),(112,'Kamilla','+7','Nur-Sultan','Kabanbay, 56','Kazakhstan'),(113,'Amina','+7','Almaty','Nazarbayev, 56','Kazakhstan'),(114,'Gulnaz','+7','New York','Dostyq, 46','USA'),(115,'Altynay','+7','London','Zhurgenev, 34','UK'),(116,'Borovoe','+7','Borovoe','Abylaihana, 56','Kazakhstan'),(117,'Tokyo','+9','Tokyo','Hong, 56','Japan'),(118,'Moscow','+6','Moscow','Blue, 56','Russia');
+INSERT INTO `hotel` VALUES (111,'Zhuldyz','+7','Almaty','Shalyapin, 65','Kazakhstan'),(112,'Kamilla','+7','Nur-Sultan','Kabanbay, 56','Kazakhstan'),(113,'Amina','+7','Almaty','Nazarbayev, 56','Kazakhstan'),(114,'Gulnaz','+7','New York','Dostyq, 46','USA'),(115,'Altynay','+7','London','Zhurgenev, 34','UK'),(116,'Borovoe','+7','Borovoe','Abylaihana, 56','Kazakhstan'),(117,'Tokyo','+9','Tokyo','Hong, 56','Japan'),(118,'Moscow','+6','Moscow','Blue, 56','Russia'),(116,'Aqtau','+17','Aktau','Ispulayeva, 56','Kazakhstan'),(116,'DelLuna','+18','Shymkent','Zhangeldina, 5','Kazakhstan'),(116,'OiQaragai','+8','Borovoe','Abylaihana, 6','Kazakhstan');
 /*!40000 ALTER TABLE `hotel` ENABLE KEYS */;
 UNLOCK TABLES;
 
