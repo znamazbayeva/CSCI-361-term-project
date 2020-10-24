@@ -42,7 +42,7 @@ CREATE TABLE `Room Type_has_Booking` (
 
 LOCK TABLES `Room Type_has_Booking` WRITE;
 /*!40000 ALTER TABLE `Room Type_has_Booking` DISABLE KEYS */;
-INSERT INTO `Room Type_has_Booking` VALUES (1,10000,1,'Single',111),(2,10001,2,'Double',111),(3,10002,3,'Quad',111),(4,10003,4,'Studio',111),(5,10004,5,'Triple',111),(6,10005,6,'Twin',111);
+INSERT INTO `Room Type_has_Booking` VALUES (1,10000,1,'Single',111),(2,10001,2,'Double',111),(3,10002,3,'Quad',111),(4,10003,4,'Studio',111),(5,10004,5,'Triple',111),(6,10005,6,'Twin',111),(7,10006,7,'Studio',111),(8,10007,8,'Triple',111),(9,10008,9,'Twin',111);
 /*!40000 ALTER TABLE `Room Type_has_Booking` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
