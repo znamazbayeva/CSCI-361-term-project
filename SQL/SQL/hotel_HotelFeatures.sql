@@ -37,7 +37,7 @@ CREATE TABLE `HotelFeatures` (
 
 LOCK TABLES `HotelFeatures` WRITE;
 /*!40000 ALTER TABLE `HotelFeatures` DISABLE KEYS */;
-INSERT INTO `HotelFeatures` VALUES ('Communal Spaces',112),('Swimming pool',112),('SPA',113),('Top Business Centre',114),('Arctic Resort',115),('Concierge Services',115);
+INSERT INTO `HotelFeatures` VALUES ('Communal Spaces',112),('Swimming pool',112),('SPA',113),('Top Business Centre',114),('Arctic Resort',115),('Concierge Services',115),('Fitness centre',112),('In room Wifi',112),('Concierge Services',113);
 /*!40000 ALTER TABLE `HotelFeatures` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
