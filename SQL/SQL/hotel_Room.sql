@@ -44,7 +44,7 @@ CREATE TABLE `Room` (
 
 LOCK TABLES `Room` WRITE;
 /*!40000 ALTER TABLE `Room` DISABLE KEYS */;
-INSERT INTO `Room` VALUES (1,'1',7,'Clean','Single',111,1),(2,'1',10,'Clean','Double',111,1),(3,'1',7,'Clean','Quad',111,1),(4,'1',11,'Clean','Studio',111,1),(5,'1',7,'Clean','Triple',111,1),(6,'1',10,'Clean','Twin',111,1);
+INSERT INTO `Room` VALUES (1,'1',7,'Clean','Single',111,1),(2,'1',10,'Clean','Double',111,1),(3,'1',7,'Clean','Quad',111,1),(4,'1',11,'Clean','Studio',111,1),(5,'1',7,'Clean','Triple',111,1),(6,'1',10,'Clean','Twin',111,1)(1,'1',11,'Clean','Studio',113,1),(2,'2',7,'Clean','Triple',113,1),(3,'3',10,'Clean','Twin',113,1);
 /*!40000 ALTER TABLE `Room` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
