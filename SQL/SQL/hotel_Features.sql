@@ -37,7 +37,7 @@ CREATE TABLE `Features` (
 
 LOCK TABLES `Features` WRITE;
 /*!40000 ALTER TABLE `Features` DISABLE KEYS */;
-INSERT INTO `Features` VALUES ('Cabana',113,'Balcony'),('Cabana',113,'Swimming Pool'),('Deluxe',116,'Antiques'),('Double',111,'Dressing table'),('Double',113,'King-size double bed'),('Double-double',111,'Double bed for children'),('Lanai',113,'Waterfall'),('Master Suite',112,'Terrace space'),('Presidential Suite',114,'Antique paintings');
+INSERT INTO `Features` VALUES ('Cabana',113,'Balcony'),('Cabana',113,'Swimming Pool'),('Deluxe',116,'Antiques'),('Double',111,'Dressing table'),('Double',113,'King-size double bed'),('Double-double',111,'Double bed for children'),('Lanai',113,'Waterfall'),('Master Suite',112,'Terrace space'),('Presidential Suite',114,'Antique paintings'),('Lanai',111,'Balcony'),('Master Suite',111,'Terrace space'),('Presidential Suite',111,'Antique paintings');
 /*!40000 ALTER TABLE `Features` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
