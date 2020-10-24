@@ -40,7 +40,8 @@ CREATE TABLE `hotel` (
 
 LOCK TABLES `hotel` WRITE;
 /*!40000 ALTER TABLE `hotel` DISABLE KEYS */;
-INSERT INTO `hotel` VALUES (111,'Zhuldyz','7075533442','+7','Kazakhstan','Almaty','Shalyapin, 65'),(112,'Kamilla','7075566335','+7','Kazakhstan','Nur-Sultan','Kabanbay, 56'),(113,'Amina','7036564827','+7','Kazakhstan','Almaty','Nazarbayev, 56'),(114,'Gulnaz','7046435683','+7','USA','New York','Dostyq, 46'),(115,'Altynay','7946763726','+7','UK','London','Zhurgenev, 34');
+INSERT INTO `hotel` VALUES (111,'Zhuldyz','7075533442','+7','Kazakhstan','Almaty','Shalyapin, 65'),(112,'Kamilla','7075566335','+7','Kazakhstan','Nur-Sultan','Kabanbay, 56'),(113,'Amina','7036564827','+7','Kazakhstan','Almaty','Nazarbayev, 56'),(114,'Gulnaz','7046435683','+7','USA','New York','Dostyq, 46'),(115,'Altynay','7946763726','+7','UK','London','Zhurgenev, 34'),
+(116,'Moody Moon','7036564824','+1','Japan','Osaka','Akasaka, 52'),(117,'Radisson','7046435680','+2','Japan','Tokyo','Mita, 31'),(118,'Travelodge','7946763711','+3','USA','New York','Ginza, 34');
 /*!40000 ALTER TABLE `hotel` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
