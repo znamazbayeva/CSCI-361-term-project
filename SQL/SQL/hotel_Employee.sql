@@ -39,7 +39,9 @@ CREATE TABLE `Employee` (
 
 LOCK TABLES `Employee` WRITE;
 /*!40000 ALTER TABLE `Employee` DISABLE KEYS */;
-INSERT INTO `Employee` VALUES (1,'Zhuldy','zhuldyz@gmail.com','87075566453',6),(2,'Amina','amina@gmail.com','87075566543',9),(3,'Kamilla','kamilla@gmail.com','87073456275',9),(4,'Justin','justin@gmail.com','87035622673',9),(5,'Ariana','ariana@gmail.com','87074276323',6),(6,'Altynay','Altynay@gmail.com','87073264572',6),(7,'Lyubov','lybov@gmail.com','87072364272',6),(8,'Zhurek','zhurek@gmail.com','87072634562',6),(9,'Gulnaz','gulnaz@gmail.com','87072736472',9),(10,'Kymbat','kymbat@gmail.com','87072364527',6),(11,'Qarashash','qarashash@gmail.com','87072734682',6);
+INSERT INTO `Employee` VALUES (1,'Zhuldy','zhuldyz@gmail.com','87075566453',6),(2,'Amina','amina@gmail.com','87075566543',9),(3,'Kamilla','kamilla@gmail.com','87073456275',9),(4,'Justin','justin@gmail.com','87035622673',9),(5,'Ariana','ariana@gmail.com','87074276323',6),(6,'Altynay','Altynay@gmail.com','87073264572',6),(7,'Lyubov','lybov@gmail.com','87072364272',6),(8,'Zhurek','zhurek@gmail.com','87072634562',6),(9,'Gulnaz','gulnaz@gmail.com','87072736472',9),(10,'Kymbat','kymbat@gmail.com','87072364527',6),(11,'Qarashash','qarashash@gmail.com','87072734682',6),(12,'Ace','aceace@gmail.com','87072994682',6),
+(13,'Alem','aalem@gmail.com','87072766682',9),
+(14,'Bala','balaaa@gmail.com','87072733682',6);
 /*!40000 ALTER TABLE `Employee` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
