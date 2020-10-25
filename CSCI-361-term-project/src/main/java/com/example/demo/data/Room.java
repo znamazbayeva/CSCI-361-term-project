@@ -1,49 +1,89 @@
 package com.example.demo.data;
 
 import java.io.Serializable;
+import java.util.Objects;
 
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
 import javax.persistence.Table;
 
+import com.example.demo.data.RoomType.RoomTypeId;
 
+
+@SuppressWarnings("serial")
 @Entity
 @Table(name="room")
-public class Room{
-	@Id
-	private Integer room_id;
+public class Room implements Serializable{
+	
 
+@SuppressWarnings("serial")
+@Embeddable
+public static class RoomId implements Serializable {
+	
+	@Column(name = "room_number")
 	private Integer room_number;
-
-	private Integer available;
-
-	private Integer capacity;
-
-	@ManyToOne
-    @JoinColumn(name="hotel_id", nullable=false)
-    private Hotel hotel;
-
-	public Integer getId() {
-		return room_id;
-	}
-
-	public void setId(Integer id) {
-		this.room_id = id;
-	}
-
-	public Integer getRoomNumber() {
+	
+	private RoomTypeId room_type_id;
+	
+	public Integer getRoom_number() {
 		return room_number;
 	}
 
-	public void setRoomNumber(Integer id) {
+	public void setRoom_number(Integer id) {
 		this.room_number = id;
 	}
+	
+	public RoomTypeId getRoom_type_id() {
+		return room_type_id;
+	}
 
+	public void setRoom_type_id(RoomTypeId id) {
+		this.room_type_id = id;
+	}
+	
+	@Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        RoomId that = (RoomId) o;
+        return room_type_id.equals(that.room_type_id) &&
+        		room_number == that.room_number;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(room_type_id, room_number);
+    }
+
+}
+	
+	@EmbeddedId 
+	private RoomId room_id;
+
+	private Integer available;
+	
+	@MapsId("room_type_id")
+	@JoinColumns({
+		@JoinColumn(name="room_type_name", referencedColumnName="room_type_name"),
+		@JoinColumn(name="hotel_id", referencedColumnName="hotel_id")
+	})
+	@ManyToOne
+    private RoomType room_type;
+
+
+	public RoomId getRoom_id() {
+		return this.room_id;
+	}
+	
+	public void setRoom_id(RoomId id) {
+		this.room_id = id;
+	}
 	public Integer getAvailable() {
 		return available;
 	}
@@ -51,21 +91,27 @@ public class Room{
 	public void setAvailable(Integer id) {
 		this.available = id;
 	}
-
-	public Integer getCapacity() {
-		return capacity;
+	
+	public RoomType getRoomType() {
+		return room_type;
 	}
 
-	public void setCapacity(Integer id) {
-		this.capacity = id;
+	public void setRoomType(RoomType id) {
+		this.room_type = id;
 	}
 	
-	public Hotel getHotel() {
-		return hotel;
-	}
+	@Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Room that = (Room) o;
+        return room_id.equals(that.room_id);
+    }
 
-	public void setHotel(Hotel h) {
-		hotel = h;
-	}
+    @Override
+    public int hashCode() {
+        return Objects.hash(room_id);
+    }
 	  
 }
+

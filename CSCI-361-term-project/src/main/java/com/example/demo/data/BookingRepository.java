@@ -6,15 +6,28 @@ import java.util.TreeSet;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
+import com.example.demo.data.Room.RoomId;
+
 public interface BookingRepository extends CrudRepository<Booking, Integer>{
-	@Query("select r.room_id " + 
+	
+	@Query("select r " + 
 			"from Room r " + 
-			"where r.room_id not in " + 
+			"where r.room_id in ?3 "
+			+ "and r.room_id.room_type_id not in " + 
 			"(" + 
-			"  select b.room_id " + 
+			"  select b.room_type.room_type_id " + 
 			"  from Booking b " + 
-			"  where b.check_out_date > ?1" + 
-			"  or b.check_in_date < ?2 " + 
-			")")
-	TreeSet<Integer> findAvailableRoomID(Date from, Date to);
+			"  where b.check_out > ?1" + 
+			"  and b.check_in < ?2 " + 
+			") and " + 
+			" r.room_id.room_number not in " + 
+			"(" + 
+			"  select b.room_number " + 
+			"  from Booking b " + 
+			"  where b.check_out > ?1" + 
+			"  and b.check_in < ?2 " + 
+			") "
+			+ "order by r.room_type.hotel.country_name, r.room_type.hotel.city")
+	Iterable<Room> findAvailableRooms(Date from, Date to, Iterable<RoomId> r);
+	
 }

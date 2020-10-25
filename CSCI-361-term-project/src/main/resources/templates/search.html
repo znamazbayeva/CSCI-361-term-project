@@ -15,13 +15,18 @@ table {
 <p>Click on the button to open the dropdown menu, and use the input field to search for a specific available room.</p>
 
 <label for="browser">Country:</label>
-<input list="country" id="myCountry" onchange="getCityList()">
+<input list="country" id="myCountry" onchange="getCityList(),getRoomtypeList()">
 <datalist id="country">
 </datalist>
 
 <label for="browser">City:</label>
-<input list="city" id="myCity">
+<input list="city" id="myCity" onchange="getRoomtypeList()">
 <datalist id="city">
+</datalist>
+
+<label for="browser">Room Type:</label>
+<input list="roomtype" id="myRoomtype">
+<datalist id="roomtype">
 </datalist>
 
 <label for="browser">From:</label>
@@ -51,6 +56,7 @@ function availableRooms() {
 	var myUrl = "search/available?";
 	var country = document.getElementById("myCountry").value;
 	var city = document.getElementById("myCity").value;
+	var roomtype = document.getElementById("myRoomtype").value;
 	var from = document.getElementById("from-date").value;
 	var to = document.getElementById("to-date").value;
 	
@@ -59,6 +65,9 @@ function availableRooms() {
 	}
 	if (city != "") {
 		myUrl = myUrl+"city="+city+"&";
+	}
+	if (roomtype != "") {
+		myUrl = myUrl+"roomtype="+roomtype+"&";
 	}
 	if (from != "") {
 		myUrl = myUrl+"from="+from+"&";
@@ -71,11 +80,15 @@ function availableRooms() {
         dataType : 'json',
         success : function(r) {
         	$("#my-list").html("");
-        	$("#my-list").append("<tr><th>Country</th><th>City</th><th>Room Number</th><th>Capacity</th></tr>");
+        	if(!$.trim(r)){
+        		$("#my-list").append("Sorry, No available rooms found. Try to search for other criterias.");
+        	
+        	} else {
+        	$("#my-list").append("<tr><th>Country</th><th>City</th><th>Room Type</th><th>Capacity</th><th>Price</th></tr>");
 
         	r.forEach(function (e) {
-        		$("#my-list").append("<tr><td>"+e.hotel.country+"</td><td>"+e.hotel.city+
-        				"</td><td>"+e.roomNumber+"</td><td>"+e.capacity+"</td><td><a href=\"search\\hotel\"><button type=\"button\">"+
+        		$("#my-list").append("<tr><td>"+e.roomType.hotel.country+"</td><td>"+e.roomType.hotel.city+
+        				"</td><td>"+e.room_id.room_type_id.room_type_name+"</td><td>"+e.roomType.capacity+"</td><td>"+e.roomType.price+"</td><td><a href=\"search\\hotel\"><button type=\"button\">"+
         				"Book"+"</button></a></td></tr>"); 
 /*         		$("#my-list").append("<tr><td>"+e.hotel.country+"</td><td>"+e.hotel.city+
         				"</td><td>"+e.roomNumber+"</td><td>"+e.capacity+"</td><td><a href=\"search\\hotel\\"+e.hotel.id+"\"><button type=\"button\">"+
@@ -83,7 +96,7 @@ function availableRooms() {
         	
           }); 
 
-        }
+        }}
     });
 
 }
@@ -126,9 +139,32 @@ function getCityList() {
     });
 }
 
+function getRoomtypeList() {
+	var country = document.getElementById("myCountry").value;
+	var city = document.getElementById("myCity").value;
+	var myUrl="search/roomtypes?";
+	
+	if (country != "") {
+		myUrl = myUrl+"country="+country+"&";
+	}
+	if (city != "") {
+		myUrl = myUrl+"city="+city;
+	}
+	
+    $.ajax({
+        url : myUrl,
+        dataType : 'json',
+        success : function(r) {
+            updateList(r, "#roomtype");
+        }
+    });
+}
+
+
 $(document).ready(function () {
 	getCountryList();
 	getCityList();
+	getRoomtypeList();
 	availableRooms();
 
  		$("#my-list").on('click','.bookhotel', function() {
