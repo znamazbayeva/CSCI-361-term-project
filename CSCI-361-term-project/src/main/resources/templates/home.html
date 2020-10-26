@@ -1,4 +1,4 @@
-<!DOCTYPE HTML>
+<!--<!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title th:text="${title}" />
@@ -23,8 +23,7 @@
     </div>
 </section>
 <div class="container">
-    <!-- Example row of columns -->
-    <div class="row">
+  <div class="row">
         <div class="col-md-2">
             <h2>Zhuldyz</h2>
             <p>Contact Phone:+777707770707 </p>
@@ -54,6 +53,84 @@
 
     <hr>
 
+</div>
+</body>
+</html>
+-->
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${title}" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+    <h5 class="my-0 mr-md-auto font-weight-normal">Hotel chain</h5>
+    <nav class="my-2 my-md-0 mr-md-3">
+
+    </nav>
+    <a class="btn btn-outline-primary" th:href="@{profile}">My profile</a>
+    <a class="btn btn-outline-primary" th:href="@{registration}">Register</a>
+    <a class="btn btn-outline-primary" th:href="@{login}">Log In</a>
+</div>
+<body>
+<section class="jumbotron text-center">
+    <div class="container">
+
+        <h1 style="color:dodgerblue">"Hedgehogs"hotel chain</h1>
+        <br>
+        <br>
+        <p class="lead ">Our All-inclusive resorts and hotels offer you an exclusive travel experience: for a romantic escape or a family holiday, book your next stay with us!</p>
+        <br>
+        <br>
+        <p>
+            <a th:href="@{search}" class="btn btn-primary my-2">Search a room</a>
+        </p>
+    </div>
+</section>
+
+
+
+<br>
+<br>
+<br>
+<br>
+
+
+<div class="container .bg-secondary justify-content-center" >
+    <div class="row align-items-center">
+        <!-- Example row of columns -->
+        <div class="row">
+            <div class="col-md-2">
+                <h6>Zhuldyz</h6>
+                <p>email: zhuldyz.namazbayeva</p>
+
+            </div>
+            <div class="col-md-2">
+                <h6>Kamilla</h6>
+                <p>email: kamilla.razikhova</p>
+
+            </div>
+            <div class="col-md-2">
+                <h6>Gulnaz</h6>
+                <p>email: gulnaz.zhambulova</p>
+
+            </div>
+            <div class="col-md-2">
+                <h6>Altynai</h6>
+                <p>email: altynay.kozhaberdi</p>
+
+            </div>
+            <div class="col-md-2">
+                <h6>Amina</h6>
+                <p>email: amina.shaikym</p>
+
+            </div>
+        </div>
+
+        <hr>
+
+    </div>
 </div>
 </body>
 </html>
