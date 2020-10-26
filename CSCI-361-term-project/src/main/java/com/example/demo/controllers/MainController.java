@@ -19,6 +19,26 @@ public class MainController {
         	model.addAttribute("title", "Search Service");
     	    return "search";
     	}
+
+
+    @RequestMapping(path="/registration")
+    public String registration(Model model) {
+        model.addAttribute("title", "Register Page");
+        return "registration";
+    }
+
+    @RequestMapping(path="/login")
+    public String login(Model model) {
+        model.addAttribute("title", "Login Page");
+        return "login";
+    }
+
+    @RequestMapping(path="/profile")
+    public String profile(Model model) {
+        model.addAttribute("title", "Profile");
+        return "profile";
+    }
+
   @RequestMapping("/bookingform")
   public String bookingformpage() {
       return "bookingform";
@@ -27,5 +47,7 @@ public class MainController {
   public String bookcomplete() {
       return "successbook";
   }
+
+
 
 }
