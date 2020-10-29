@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<style>
+table {
+  border: 1px solid black;
+}
+</style>
+</head>
+
+<body>
+<a class="btn btn-outline-primary" th:href="@{/}">Main page</a>
+<h2>Search Bookings</h2>
+<p>Use the input field to search for a specific booking.</p>
+
+<label for="browser">Booking Id:</label>
+<input type="text" id="bookingId">
+
+<label for="browser">Guest Id:</label>
+<input type="text" id="guestId">
+
+<label for="browser">Guest Email:</label>
+<input type="text" id="guestEmail">
+
+<input type="submit" value="Search" id="search" onclick="availableRooms()">
+
+<br> <br>
+<label for="browser">Existing bookings:</label>
+<br>
+<br>
+<div id="my-list"></div>
+<br>
+<!-- <table style="width:100%" id="my-list"></table> -->
+
+<script>
+
+function bookingList2() {
+	var myUrl = "bookingsearch/all?";
+
+	$.ajax({
+        url : myUrl,
+        dataType : 'json',
+        success : function(r) {
+        	$("#my-list").html("");
+        	if(!$.trim(r)){
+        		$("#my-list").append("Sorry, No booking found. Try to search for other criterias.");
+        	
+        	} else {
+        	$("#my-list").append("<tr><th>Booking Id</th><th>Booking Date</th><th>From</th>"+
+        		"<th>To</th><th>Room Type</th><th>Room Number</th><th>Bill</th>"+
+        		"<th>Guest Id</th><th>Guest Name</th><th>Surname</th><th>E-mail</th></tr>");
+
+        	r.forEach(function (e) {
+        		$("#my-list").append("<tr><td>"+e.bookingId.bookingId+"</td><td>"+e.bookingDate+
+        			"</td><td>"+e.fromDate+"</td><td>"+e.toDate+"</td><td>"+e.roomType.room_type_id.room_type_name
+        			+"</td><td>"+e.roomNumber+"</td><td>"+e.bill+"</td><td>"+e.guest.guestId+"</td><td>"
+        			+e.guest.name+"</td><td>"+e.guest.surname+"</td>"+"<td>"+e.guest.email+"</td>"
+        			+"<td><a href=\"#\"><button type=\"button\">Change"+"</button></a></td>"
+        			+"<td><a href=\"#\"><button type=\"button\">Cancel"+"</button></a></td></tr>"); 
+        	
+          }); 
+
+        }}
+    });
+
+}
+
+function bookingList() {
+	var myUrl = "bookingsearch/all?";
+
+	$.ajax({
+        url : myUrl,
+        dataType : 'json',
+        success : function(r) {
+        	$("#my-list").html("");
+        	if(!$.trim(r)){
+        		$("#my-list").append("Sorry, No booking found. Try to search for other criterias.");
+        	
+        	} else {
+        	r.forEach(function (e) {
+        		$("#my-list").append("<details><summary>Booking Id: "+e.bookingId.bookingId
+        				+"&nbsp;&nbsp;&nbsp;&nbsp; Guest Id: "+e.guest.guestId+"&nbsp;&nbsp;&nbsp;&nbsp;"
+        				+"<a href=\"#\"><button type=\"button\">Change"
+        				+"</button></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href=\"#\"><button type=\"button\">Cancel"
+        				+"</button></a></summary><p>Booking Date: " + e.bookingDate +"<br> From: "
+        				+ e.fromDate + ". To: " + e.toDate + "<br> Room Type: "
+        				+ e.roomType.room_type_id.room_type_name + ". Room Number: "
+        				+ e.roomNumber + "<br> Bill: "+e.bill + "<br> Guest name: "+ e.guest.name
+        				+ " " + e.guest.surname + "<br> Guest e-mail: " + e.guest.email
+        				+"</p></details>"); 
+        	
+          }); 
+
+        }}
+    });
+
+}
+
+$(document).ready(function () {
+	bookingList();
+//	bookingList2();
+});
+</script>
+
+</body>
+</html>

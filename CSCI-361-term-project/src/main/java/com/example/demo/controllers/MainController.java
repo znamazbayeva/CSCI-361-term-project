@@ -14,11 +14,17 @@ public class MainController {
         return "home";
     }
 
-    @RequestMapping(path="/search")
-    	public String search(Model model) {
-        	model.addAttribute("title", "Search Service");
-    	    return "search";
-    	}
+	@RequestMapping(path = "/search")
+	public String search(Model model) {
+		model.addAttribute("title", "Search Service");
+		return "search";
+	}
+	
+	@RequestMapping(path = "/bookingsearch")
+	public String bookingsearch(Model model) {
+		model.addAttribute("title", "BookingSearch Service");
+		return "bookingsearch";
+	}
 
 
     @RequestMapping(path="/registration")
