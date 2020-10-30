@@ -30,6 +30,11 @@ table {
 <datalist id="roomtype">
 </datalist>
 
+<label for="browser">Capacity:</label>
+<input list="capacity" id="myCapacity">
+<datalist id="capacity">
+</datalist>
+<br>
 <label for="browser">From:</label>
   <input type="date" id="from-date">
 
@@ -41,7 +46,7 @@ table {
 <br> <br>
 <label for="browser">Available rooms:</label>
 <br>
-<table style="width:50%" id="my-list"></table>
+<table style="width:70%" id="my-list"></table>
 
 <script>
 
@@ -58,6 +63,7 @@ function availableRooms() {
 	var country = document.getElementById("myCountry").value;
 	var city = document.getElementById("myCity").value;
 	var roomtype = document.getElementById("myRoomtype").value;
+	var capacity = document.getElementById("myCapacity").value;
 	var from = document.getElementById("from-date").value;
 	var to = document.getElementById("to-date").value;
 	
@@ -69,6 +75,9 @@ function availableRooms() {
 	}
 	if (roomtype != "") {
 		myUrl = myUrl+"roomtype="+roomtype+"&";
+	}
+	if (capacity != "") {
+		myUrl = myUrl+"capacity="+capacity+"&";
 	}
 	if (from != "") {
 		myUrl = myUrl+"from="+from+"&";

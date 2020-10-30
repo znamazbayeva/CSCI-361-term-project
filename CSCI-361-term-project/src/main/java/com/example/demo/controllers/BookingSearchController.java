@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.data.Booking;
@@ -21,5 +22,20 @@ public class BookingSearchController {
 	public @ResponseBody Iterable<Booking> getAllUsers() {
 		// This returns a JSON or XML with the users
 		return bookingRepository.findAll();
+	}
+	
+	@GetMapping(path="/booking")
+	public @ResponseBody Iterable<Booking> getCities(@RequestParam(value = "bookingid", required=false) 
+	String bookingid, @RequestParam(value = "guestid", required=false) String guestid, 
+	@RequestParam(value = "email", required=false) String email) {
+		Integer bid = null;
+		Integer gid = null;
+		if (bookingid != null) {
+			bid = Integer.parseInt(bookingid);
+		}
+		if (guestid != null) {
+			gid = Integer.parseInt(guestid);
+		}
+		return bookingRepository.findSpecificBooking(bid, gid, email);
 	}
 }

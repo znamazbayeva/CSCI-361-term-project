@@ -75,19 +75,24 @@ public class SearchController {
   public @ResponseBody Iterable<Room> getAvailableRooms(@RequestParam(value = "city", required=false) String city,
 		  @RequestParam(value = "country", required = false) String country, 
 		  @RequestParam(value = "roomtype", required = false) String roomType,
+		  @RequestParam(value = "capacity", required = false) String capacity,
 		  @RequestParam(value = "from", required=false) String from,
 		  @RequestParam(value = "to", required = false) String to) {
 	  
 		Set<Integer> h = hotelRepository.findHotelIdByCountryAndCity(country, city);
 		Iterable<Room> room;
+		Integer cap = null;
+		if (capacity != null) {
+			cap = Integer.parseInt(capacity);
+		}
 	  
 		if (from != null && to != null) {
-			Iterable<RoomId> roomid = roomRepository.findRoomIdByRoomType(h, roomType);
+			Iterable<RoomId> roomid = roomRepository.findRoomIdByRoomType(h, roomType, cap);
 			Date fromD = Date.valueOf(from);
 			Date toD = Date.valueOf(to);
 			room = bookingRepository.findAvailableRooms(fromD, toD, roomid);
 		} else {
-			room = roomRepository.findAvailableNowRooms(h, roomType);
+			room = roomRepository.findAvailableNowRooms(h, roomType, cap);
 		}
 		return room;
 	}

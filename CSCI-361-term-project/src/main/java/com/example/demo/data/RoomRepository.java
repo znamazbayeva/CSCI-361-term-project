@@ -16,18 +16,20 @@ import com.example.demo.data.Room.RoomId;
 public interface RoomRepository extends CrudRepository<Room, Integer> {
 	
 	@Query("select r from Room r where r.available=1 and r.room_id.room_type_id.hotel_id in ?1 and "
-			+ "(r.room_id.room_type_id.room_type_name in ?2 or ?2=null) " +
+			+ "(r.room_id.room_type_id.room_type_name in ?2 or ?2=null) "
+			+ "and (r.room_type.capacity=?3 or ?3=null) " +
 			"group by r.room_id.room_type_id.hotel_id, r.room_id.room_type_id.room_type_name "
 			+ "order by r.room_type.hotel.country_name, r.room_type.hotel.city")
-	Iterable<Room> findAvailableNowRooms(Set<Integer> h, String r);
+	Iterable<Room> findAvailableNowRooms(Set<Integer> h, String r, Integer cap);
 
 	@Query("select r.room_type.room_type_id.room_type_name from Room r")
 	TreeSet<String> findRoomTypes();
 	
 	@Query("select r.room_id from Room r where r.available=1 and r.room_id.room_type_id.hotel_id in ?1 and "
 			+ "(r.room_id.room_type_id.room_type_name in ?2 or ?2=null) " +
+			"and (r.room_type.capacity=?3 or ?3=null) " +
 			"group by r.room_id.room_type_id.hotel_id, r.room_id.room_type_id.room_type_name "
 			+ "order by r.room_type.hotel.country_name, r.room_type.hotel.city")
-	Iterable<RoomId> findRoomIdByRoomType(Set<Integer> h, String r);
+	Iterable<RoomId> findRoomIdByRoomType(Set<Integer> h, String r, Integer cap);
 }
 
