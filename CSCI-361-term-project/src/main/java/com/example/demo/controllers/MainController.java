@@ -38,6 +38,13 @@ public class MainController {
         model.addAttribute("title", "Login Page");
         return "login";
     }
+	
+	 @RequestMapping(path="/userlogin")
+   	 public String userlogin(Model model) {
+    	    model.addAttribute("title", "User Login Page");
+    	    return "userlogin";
+    }
+
 
     @RequestMapping(path="/profile")
     public String profile(Model model) {
