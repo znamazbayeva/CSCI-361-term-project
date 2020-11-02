@@ -1,12 +1,18 @@
 package com.example.demo.controllers;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
 import com.example.demo.data.Booking;
@@ -44,5 +50,19 @@ public class BookingSearchController {
 	public RedirectView deleteBooking(@PathVariable("id") Integer id) {
 		bookingRepository.deleteById(id);
 		return new RedirectView("/bookingsearch");
+	}
+	
+	@RequestMapping("/edit/{id}")
+	public ModelAndView showEditBookingPage(@PathVariable(name = "id") int id) {
+	    ModelAndView mav = new ModelAndView("bookingupdate");
+	    Optional<Booking> booking = bookingRepository.findById(id);
+	    mav.addObject("booking", booking);
+	     
+	    return mav;
+	}
+	@RequestMapping("/save")
+	public RedirectView saveProduct(@ModelAttribute("booking") Booking booking) {
+		bookingRepository.save(booking);
+	    return new RedirectView("/bookingsearch");
 	}
 }
