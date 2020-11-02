@@ -23,54 +23,57 @@ import com.example.demo.data.RoomType.RoomTypeId;
 @Table(name="booking")
 public class Booking implements Serializable {
 	
-	@SuppressWarnings("serial")
-	@Embeddable
-	public static class BookingId implements Serializable {
-		
-		@Column(name = "booking_id")
-		private Integer booking_id;
-		
-		@Column(name = "guest_id")
-		private Integer guest_id;
-
-		public Integer getBookingId() {
-			return booking_id;
-		}
-
-		public void setBookingId(Integer booking_id) {
-			this.booking_id = booking_id;
-		}
-		
-		public Integer getGuestId() {
-			return guest_id;
-		}
-
-		public void setGuestId(Integer booking_id) {
-			this.guest_id = booking_id;
-		}
-		
-		@Override
-	    public boolean equals(Object o) {
-	        if (this == o) return true;
-	        if (o == null || getClass() != o.getClass()) return false;
-	        BookingId that = (BookingId) o;
-	        return booking_id == that.booking_id &&
-	        		guest_id == that.guest_id;
-	    }
-
-	    @Override
-	    public int hashCode() {
-	        return Objects.hash(booking_id, guest_id);
-	    }
-	}
-	
-	@EmbeddedId 
-	private BookingId booking_id;
-	
-	@MapsId("guest_id")
+//	@SuppressWarnings("serial")
+//	@Embeddable
+//	public static class BookingId implements Serializable {
+//		
+//		@Column(name = "booking_id")
+//		private Integer booking_id;
+//		
+//		@Column(name = "guest_id")
+//		private Integer guest_id;
+//
+//		public Integer getBookingId() {
+//			return booking_id;
+//		}
+//
+//		public void setBookingId(Integer booking_id) {
+//			this.booking_id = booking_id;
+//		}
+//		
+//		public Integer getGuestId() {
+//			return guest_id;
+//		}
+//
+//		public void setGuestId(Integer booking_id) {
+//			this.guest_id = booking_id;
+//		}
+//		
+//		@Override
+//	    public boolean equals(Object o) {
+//	        if (this == o) return true;
+//	        if (o == null || getClass() != o.getClass()) return false;
+//	        BookingId that = (BookingId) o;
+//	        return booking_id == that.booking_id &&
+//	        		guest_id == that.guest_id;
+//	    }
+//
+//	    @Override
+//	    public int hashCode() {
+//	        return Objects.hash(booking_id, guest_id);
+//	    }
+//	}
+//	
+//	@EmbeddedId 
+//	private BookingId booking_id;
+//	
+//	@MapsId("guest_id")
 	@JoinColumn(name="guest_id", referencedColumnName="guest_id")
 	@ManyToOne
     private Guest guest;
+	
+	@Id
+	private Integer booking_id;
 	
 	@Column(name = "booking_date")
 	private Date booking_date;
@@ -90,14 +93,22 @@ public class Booking implements Serializable {
 		@JoinColumn(name="hotel_id", referencedColumnName="hotel_id")
 	})
     private RoomType room_type;
-
-	public BookingId getBookingId() {
-		return this.booking_id;
-	}
 	
-	public void setBookingId(BookingId id) {
-		this.booking_id = id;
+	public Integer getBookingId() {
+		return booking_id;
 	}
+
+	public void setBookingId(Integer booking_id) {
+		this.booking_id = booking_id;
+	}
+
+//	public BookingId getBookingId() {
+//		return this.booking_id;
+//	}
+//	
+//	public void setBookingId(BookingId id) {
+//		this.booking_id = id;
+//	}
 	
 	public Date getFromDate() {
 		return this.check_in;

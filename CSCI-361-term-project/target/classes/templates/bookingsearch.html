@@ -24,7 +24,7 @@ table {
 <label for="browser">Guest Email:</label>
 <input type="text" id="guestEmail">
 
-<input type="submit" value="Search" id="search" onclick="availableRooms()">
+<input type="submit" value="Search" id="search" onclick="bookingList()">
 
 <br> <br>
 <label for="browser">Existing bookings:</label>
@@ -68,7 +68,21 @@ function bookingList2() {
 }
 
 function bookingList() {
-	var myUrl = "bookingsearch/all?";
+	var myUrl = "bookingsearch/booking?";
+	
+	var bid = document.getElementById("bookingId").value;
+	var gid = document.getElementById("guestId").value;
+	var email = document.getElementById("guestEmail").value;
+	
+	if (bid != "") {
+		myUrl = myUrl+"bookingid="+bid+"&";
+	}
+	if (gid != "") {
+		myUrl = myUrl+"guestid="+gid+"&";
+	}
+	if (email != "") {
+		myUrl = myUrl+"email="+email+"&";
+	}
 
 	$.ajax({
         url : myUrl,
@@ -80,7 +94,7 @@ function bookingList() {
         	
         	} else {
         	r.forEach(function (e) {
-        		$("#my-list").append("<details><summary>Booking Id: "+e.bookingId.bookingId
+        		$("#my-list").append("<details><summary>Booking Id: "+e.bookingId
         				+"&nbsp;&nbsp;&nbsp;&nbsp; Guest Id: "+e.guest.guestId+"&nbsp;&nbsp;&nbsp;&nbsp;"
         				+"<a href=\"#\"><button type=\"button\">Change"
         				+"</button></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href=\"#\"><button type=\"button\">Cancel"
