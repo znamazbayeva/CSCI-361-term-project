@@ -3,9 +3,11 @@ package com.example.demo.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.view.RedirectView;
 
 import com.example.demo.data.Booking;
 import com.example.demo.data.BookingRepository;
@@ -37,5 +39,10 @@ public class BookingSearchController {
 			gid = Integer.parseInt(guestid);
 		}
 		return bookingRepository.findSpecificBooking(bid, gid, email);
+	}
+	@RequestMapping("/delete/{id}")
+	public RedirectView deleteBooking(@PathVariable("id") Integer id) {
+		bookingRepository.deleteById(id);
+		return new RedirectView("/bookingsearch");
 	}
 }
