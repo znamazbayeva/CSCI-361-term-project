@@ -75,18 +75,32 @@
  
             <table border="0" cellpadding="10">
                 <tr>             
-                    <td>Booking ID:</td>
-                    <td>
-                        <input type="number" th:field="*{bookingId}" readonly />
-                    </td>
-                </tr>  
-                <tr>             
                     <td>GuestId:</td>
                     <td>
-                        <input type="number" th:field="*{guest.guestId}" readonly />
+                        <input type="text" th:field="*{guest.guestId}" readonly />
                     </td>
                 </tr>
+                
+           <tr>
+                    <td>Guest Name:</td>
+                    <td><input type="text" th:field="*{guest.name}" /></td>
+                </tr>
+                 <tr>
+                    <td>Guest Surname:</td>
+                    <td><input type="text" th:field="*{guest.surname}" /></td>
+                </tr>
+                 <tr>
+                    <td>Guest Email:</td>
+                    <td><input type="text" th:field="*{guest.email}" /></td>
+                </tr>
                 <tr>             
+                    <td>Booking ID:</td>
+                    <td>
+                        <input type="text" th:field="*{bookingId}" readonly />
+                    </td>
+                </tr>  
+                <tr>
+                             
                     <td>Booking Date:</td>
                     <td>
                         <input type="date" th:field="*{bookingDate}" readonly />
@@ -111,22 +125,11 @@
                     <td>Room Number:</td>
                     <td><input type="text" th:field="*{roomNumber}" /></td>
                 </tr>
-                <tr>
+                <tr style="display:none;">
                     <td>Bill:</td>
                     <td><input type="text" th:field="*{bill}" /></td>
                 </tr>
-                <tr>
-                    <td>Guest Name:</td>
-                    <td><input type="text" th:field="*{guest.name}" /></td>
-                </tr>
-                 <tr>
-                    <td>Guest Surname:</td>
-                    <td><input type="text" th:field="*{guest.surname}" /></td>
-                </tr>
-                 <tr>
-                    <td>Guest Email:</td>
-                    <td><input type="text" th:field="*{guest.email}" /></td>
-                </tr>
+
  
                                
                 <tr>
