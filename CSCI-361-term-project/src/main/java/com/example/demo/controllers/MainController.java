@@ -5,8 +5,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.hedgehogs.hotelchain.models.Hotel;
+import com.hedgehogs.hotelchain.repo.HotelRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+
 @Controller
 public class MainController {
+    @Autowired
+    private HotelRepository hotelRepository;
 
     @GetMapping("/")
     public String home(Model model) {
