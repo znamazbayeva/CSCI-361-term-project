@@ -10,7 +10,8 @@ public class MainController {
 
     @GetMapping("/")
     public String home(Model model) {
-        model.addAttribute("title", "Main Page");
+        Iterable<Hotel> hotels=hotelRepository.findAll();
+        model.addAttribute("hotels", hotels);
         return "home";
     }
 
