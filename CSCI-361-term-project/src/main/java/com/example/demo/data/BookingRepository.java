@@ -35,4 +35,6 @@ public interface BookingRepository extends CrudRepository<Booking, Integer>{
 			+ "and (b.guest.email=?3 or ?3=null)")
 	Iterable<Booking> findSpecificBooking(Integer bid, Integer gid, String email);
 	
+	
+	
 }
