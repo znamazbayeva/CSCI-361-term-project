@@ -98,10 +98,7 @@
 
 <div class="container mt-5">
     <h1>Hotels</h1>
-    <div th:each="el :${hotels}" class="alert alert-info mt-2">
-        <h3 th:text="${el.hotel_id}"/>
-        <p th:text="${el.country_name}"/>
-    </div>
+  
     <div class="col-md-8">
         <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
             <div class="col p-4 d-flex flex-column position-static">
