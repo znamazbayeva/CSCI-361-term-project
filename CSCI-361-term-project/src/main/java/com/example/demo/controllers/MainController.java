@@ -33,7 +33,7 @@ public class MainController {
 		return "bookingsearch";
 	}
 
-
+/*
     @RequestMapping(path="/registration")
     public String registration(Model model) {
         model.addAttribute("title", "Register Page");
@@ -50,7 +50,7 @@ public class MainController {
    	 public String userlogin(Model model) {
     	    model.addAttribute("title", "User Login Page");
     	    return "userlogin";
-    }
+    }*/
 
 
     @RequestMapping(path="/profile")
