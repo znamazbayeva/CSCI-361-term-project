@@ -112,17 +112,13 @@ public class SearchController {
 //    return "bookingpage";
 //}
 
-@RequestMapping("/hotel")
+@RequestMapping("/bookingform")
 public String hotelbookingpage() {
-    return "bookingpage";
+    return "bookingform";
 }
 
 }
 
-//@RequestMapping("/bookingform")
-//public String bookingformpage() {
-//    return "bookingform";
-//}
 
 
 
