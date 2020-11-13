@@ -2,6 +2,7 @@ package com.example.demo.data;
 
 import java.io.Serializable;
 import java.util.Objects;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
@@ -11,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.example.demo.data.RoomType.RoomTypeId;
@@ -21,47 +23,47 @@ import com.example.demo.data.RoomType.RoomTypeId;
 @Table(name="room")
 public class Room implements Serializable{
 	
+	@SuppressWarnings("serial")
+	@Embeddable
+	public static class RoomId implements Serializable {
 
-@SuppressWarnings("serial")
-@Embeddable
-public static class RoomId implements Serializable {
-	
-	@Column(name = "room_number")
-	private Integer room_number;
-	
-	private RoomTypeId room_type_id;
-	
-	public Integer getRoom_number() {
-		return room_number;
+		@Column(name = "room_number")
+		private Integer room_number;
+
+		private RoomTypeId room_type_id;
+
+		public Integer getRoom_number() {
+			return room_number;
+		}
+
+		public void setRoom_number(Integer id) {
+			this.room_number = id;
+		}
+
+		public RoomTypeId getRoom_type_id() {
+			return room_type_id;
+		}
+
+		public void setRoom_type_id(RoomTypeId id) {
+			this.room_type_id = id;
+		}
+
+		@Override
+		public boolean equals(Object o) {
+			if (this == o)
+				return true;
+			if (o == null || getClass() != o.getClass())
+				return false;
+			RoomId that = (RoomId) o;
+			return room_type_id.equals(that.room_type_id) && room_number == that.room_number;
+		}
+
+		@Override
+		public int hashCode() {
+			return Objects.hash(room_type_id, room_number);
+		}
+
 	}
-
-	public void setRoom_number(Integer id) {
-		this.room_number = id;
-	}
-	
-	public RoomTypeId getRoom_type_id() {
-		return room_type_id;
-	}
-
-	public void setRoom_type_id(RoomTypeId id) {
-		this.room_type_id = id;
-	}
-	
-	@Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        RoomId that = (RoomId) o;
-        return room_type_id.equals(that.room_type_id) &&
-        		room_number == that.room_number;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(room_type_id, room_number);
-    }
-
-}
 	
 	@EmbeddedId 
 	private RoomId room_id;
@@ -75,7 +77,9 @@ public static class RoomId implements Serializable {
 	})
 	@ManyToOne
     private RoomType room_type;
-
+	
+	@OneToMany(mappedBy = "room")
+	private Set<Booking> bookings;
 
 	public RoomId getRoom_id() {
 		return this.room_id;

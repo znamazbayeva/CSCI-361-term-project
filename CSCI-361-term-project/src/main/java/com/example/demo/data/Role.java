@@ -1,10 +1,13 @@
 package com.example.demo.data;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -17,16 +20,27 @@ public class Role {
 
     @Column(name = "role_name")
     private String roleName;
+    
+    @OneToMany(mappedBy="role")
+    private Set<Guest> users;
 
     /*@Column(name = "role_desc")
     private String desc;*/
 
-    public int getId() {
+    public Set<Guest> getUsers() {
+		return users;
+	}
+
+	public void setUsers(Set<Guest> users) {
+		this.users = users;
+	}
+
+	public int getId() {
         return roleId;
     }
 
     public void setId(int role_id) {
-        this.roleId = roleId;
+        this.roleId = role_id;
     }
 
     public String getRole() {

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.example.demo.data.User;
+import com.example.demo.data.Guest;
 import com.example.demo.service.UserService;
 
 import javax.validation.Valid;
@@ -30,14 +30,14 @@ public class AuthenticationController {
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
     public ModelAndView registration() {
         ModelAndView modelAndView = new ModelAndView();
-        User user = new User();
+        Guest user = new Guest();
         modelAndView.addObject("user", user);
         modelAndView.setViewName("registration"); // resources/template/register.html
         return modelAndView;
     }
 
     @RequestMapping(value="/registration", method=RequestMethod.POST)
-    public ModelAndView registerUser(@Valid User user, BindingResult bindingResult, ModelMap modelMap) {
+    public ModelAndView registerUser(@Valid Guest user, BindingResult bindingResult, ModelMap modelMap) {
         ModelAndView modelAndView = new ModelAndView();
         // Check for the validations
         if(bindingResult.hasErrors()) {
@@ -52,7 +52,7 @@ public class AuthenticationController {
             userService.saveUser(user);
             modelAndView.addObject("successMessage", "User is registered successfully!");
         }
-        modelAndView.addObject("user", new User());
+        modelAndView.addObject("user", new Guest());
         modelAndView.setViewName("registration");
         return modelAndView;
     }

@@ -96,41 +96,29 @@
 <br>
 <br>
 
-
-<div class="container .bg-secondary justify-content-center" >
-    <div class="row align-items-center">
-        <!-- Example row of columns -->
-        <div class="row">
-            <div class="col-md-2">
-                <h6>Zhuldyz</h6>
-                <p>email: zhuldyz.namazbayeva</p>
-
-            </div>
-            <div class="col-md-2">
-                <h6>Kamilla</h6>
-                <p>email: kamilla.razikhova</p>
-
-            </div>
-            <div class="col-md-2">
-                <h6>Gulnaz</h6>
-                <p>email: gulnaz.zhambulova</p>
-
-            </div>
-            <div class="col-md-2">
-                <h6>Altynai</h6>
-                <p>email: altynay.kozhaberdi</p>
-
-            </div>
-            <div class="col-md-2">
-                <h6>Amina</h6>
-                <p>email: amina.shaikym</p>
-
+<div class="container mt-5">
+    <h1>Hotels</h1>
+  <div th:each="el :${hotels}"class="col-md-8">
+        <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+            <div class="col p-4 d-flex flex-column position-static">
+        <h3 th:text="${el.getCountry()}"/>
+        <p th:text="${el.getCity()}"/>
             </div>
         </div>
-
-        <hr>
-
     </div>
+ 
 </div>
+    <footer class="text-muted">
+        <div class="container">
+            <p class="float-right">
+                <a href="#"></a>
+            </p>
+            <p>Contact information: +77770770707 </p>
+            <p>E-mail: information@hedgehogs.kz </p>
+            <p>Follow us on Instagram: @hedgehogs_hotelchain</p>
+        </div>
+    </footer>
+    <hr>
+
 </body>
 </html>

@@ -1,6 +1,7 @@
 package com.example.demo.controllers;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -14,16 +15,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.example.demo.data.Booking;
+import com.example.demo.*;
 import com.example.demo.data.BookingRepository;
 import com.example.demo.data.Hotel;
 import com.example.demo.data.HotelRepository;
 import com.example.demo.data.Room;
 import com.example.demo.data.Room.RoomId;
 import com.example.demo.data.RoomRepository;
-import com.example.demo.data.RoomType;
-import com.example.demo.data.RoomType.RoomTypeId;
 import com.example.demo.data.RoomTypeRepository;
+
 
 @Controller // This means that this class is a Controller
 @RequestMapping(path="/search") // This means URL's start with /search (after Application path)
@@ -80,32 +80,30 @@ public class SearchController {
 		  @RequestParam(value = "to", required = false) String to) {
 	  
 		Set<Integer> h = hotelRepository.findHotelIdByCountryAndCity(country, city);
-		Iterable<Room> room;
+		Iterable<Room> room = new ArrayList<>();
+		
 		Integer cap = null;
 		if (capacity != null) {
 			cap = Integer.parseInt(capacity);
 		}
-	  
+		Iterable<RoomId> roomid = roomRepository.findRoomIdByRoomType(h, roomType, cap);
+		
+		if (!roomid.iterator().hasNext()) return room;
+		
 		if (from != null && to != null) {
-			Iterable<RoomId> roomid = roomRepository.findRoomIdByRoomType(h, roomType, cap);
 			Date fromD = Date.valueOf(from);
 			Date toD = Date.valueOf(to);
 			room = bookingRepository.findAvailableRooms(fromD, toD, roomid);
 		} else {
-			room = roomRepository.findAvailableNowRooms(h, roomType, cap);
+			room = roomRepository.findRoomsById(roomid);
 		}
 		return room;
 	}
   
-//  @GetMapping(path="/test")
-//  public @ResponseBody Iterable<Room> getTest() {
-//    // This returns a JSON or XML with the users
-//	  Set<Integer> h = hotelRepository.findHotelIdByCountryAndCity(null, null);
-//	  Iterable<RoomId> roomid = roomRepository.findAllRoomIdByHotelId(h, null);
-//		Date fromD = Date.valueOf("2020-10-26");
-//		Date toD = Date.valueOf("2020-11-06");
-//    return bookingRepository.findAvailableRoomType(fromD, toD, roomid);
-//  }
+  @GetMapping(path="/test")
+  public @ResponseBody Iterable<Room> getTest() {
+	  return roomRepository.findAll();
+  }
 
 //@RequestMapping("/hotel/{id: [0-9]+}")
 //public String welcome() {

@@ -16,6 +16,9 @@ public interface HotelRepository extends CrudRepository<Hotel, Integer> {
 	@Query("select h.city from Hotel h" )
 	TreeSet<String> findCitiesOnly();
 	
+	@Query("select h.name from Hotel h" )
+	TreeSet<String> findNamesOnly();
+	
 	@Query("select h.city from Hotel h where h.country_name=?1" )
 	TreeSet<String> findCitiesByCountry(String country);
 	

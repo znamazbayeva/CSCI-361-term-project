@@ -18,6 +18,8 @@ import org.springframework.web.servlet.view.RedirectView;
 import com.example.demo.data.Booking;
 import com.example.demo.data.BookingRepository;
 import com.example.demo.data.Hotel;
+import com.example.demo.data.Room;
+import com.example.demo.data.RoomRepository;
 
 @Controller // This means that this class is a Controller
 @RequestMapping(path="/bookingsearch") // This means URL's start with /search (after Application path)
@@ -25,15 +27,24 @@ public class BookingSearchController {
 
 	@Autowired
 	private BookingRepository bookingRepository;
+	@Autowired
+	private RoomRepository roomRepository;
 	
 	@GetMapping(path="/all")
 	public @ResponseBody Iterable<Booking> getAllUsers() {
 		// This returns a JSON or XML with the users
-		return bookingRepository.findAll();
+		System.out.println("All");
+		return bookingRepository.findBookings();
+	}
+	
+	@GetMapping(path="/room")
+	public @ResponseBody Iterable<Room> getRooms() {
+		// This returns a JSON or XML with the users
+		return roomRepository.findAll();
 	}
 	
 	@GetMapping(path="/booking")
-	public @ResponseBody Iterable<Booking> getCities(@RequestParam(value = "bookingid", required=false) 
+	public @ResponseBody Iterable<Booking> getBookings(@RequestParam(value = "bookingid", required=false) 
 	String bookingid, @RequestParam(value = "guestid", required=false) String guestid, 
 	@RequestParam(value = "email", required=false) String email) {
 		Integer bid = null;
@@ -46,6 +57,7 @@ public class BookingSearchController {
 		}
 		return bookingRepository.findSpecificBooking(bid, gid, email);
 	}
+	
 	@RequestMapping("/delete/{id}")
 	public RedirectView deleteBooking(@PathVariable("id") Integer id) {
 		bookingRepository.deleteById(id);
@@ -60,6 +72,7 @@ public class BookingSearchController {
 	     
 	    return mav;
 	}
+	
 	@RequestMapping("/save")
 	public RedirectView saveProduct(@ModelAttribute("booking") Booking booking) {
 		Booking book = bookingRepository.findById(booking.getBookingId()).get();
@@ -71,8 +84,7 @@ public class BookingSearchController {
 			book.setFromDate(booking.getFromDate());
 			book.setToDate(booking.getToDate());
 			book.setGuest(booking.getGuest());
-			book.setRoomNumber(booking.getRoomNumber());
-			book.setRoomType(book.getRoomType());
+			book.setRoom(booking.getRoom());
 			bookingRepository.save(book);
 
 //		bookingRepository.save(booking);

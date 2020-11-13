@@ -15,14 +15,14 @@ public interface BookingRepository extends CrudRepository<Booking, Integer>{
 			"where r.room_id in ?3 "
 			+ "and r.room_id.room_type_id not in " + 
 			"(" + 
-			"  select b.room_type.room_type_id " + 
+			"  select b.room.room_id.room_type_id " + 
 			"  from Booking b " + 
 			"  where b.check_out > ?1" + 
 			"  and b.check_in < ?2 " + 
 			") and " + 
 			" r.room_id.room_number not in " + 
 			"(" + 
-			"  select b.room_number " + 
+			"  select b.room.room_id.room_number " + 
 			"  from Booking b " + 
 			"  where b.check_out > ?1" + 
 			"  and b.check_in < ?2 " + 
@@ -34,6 +34,9 @@ public interface BookingRepository extends CrudRepository<Booking, Integer>{
 			+ "(b.guest.guest_id=?2 or ?2=null) "
 			+ "and (b.guest.email=?3 or ?3=null)")
 	Iterable<Booking> findSpecificBooking(Integer bid, Integer gid, String email);
+	
+	@Query("select b from Booking b")
+	Iterable<Booking> findBookings();
 	
 	
 	

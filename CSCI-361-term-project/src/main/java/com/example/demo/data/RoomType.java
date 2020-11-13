@@ -68,11 +68,6 @@ public class RoomType implements Serializable {
 	
 	@EmbeddedId 
 	private RoomTypeId room_type_id;
-	
-//	@Id
-//	private String room_type_name;
-	
-	private String season_name;
 
 	private Integer price;
 
@@ -85,9 +80,6 @@ public class RoomType implements Serializable {
 	
 	@OneToMany(mappedBy = "room_type")
 	private Set<Room> rooms;
-	
-	@OneToMany(mappedBy = "room_type")
-	private Set<Booking> bookings;
 
 	public RoomTypeId getRoom_type_id() {
 		return room_type_id;
@@ -95,14 +87,6 @@ public class RoomType implements Serializable {
 
 	public void setRoom_type_id(RoomTypeId id) {
 		this.room_type_id = id;
-	}
-
-	public String getSeasonName() {
-		return season_name;
-	}
-
-	public void setSeasonName(String id) {
-		this.season_name = id;
 	}
 
 	public Integer getPrice() {

@@ -16,9 +16,14 @@ public class Hotel {
   private String country_name;
 
   private String city;
+  
+  private String name;
 
   @OneToMany(mappedBy="hotel")
   private Set<RoomType> roomTypes;
+  
+  @OneToMany(mappedBy="hotel")
+  private Set<Employee> employees;
   
   public int getId() {
     return hotel_id;
@@ -43,5 +48,13 @@ public class Hotel {
   public void setCity(String email) {
     this.city = email;
   }
+
+public String getName() {
+	return name;
+}
+
+public void setName(String name) {
+	this.name = name;
+}
 }
 
