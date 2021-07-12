@@ -1,1 +1,6 @@
-# CSCI-361-term-project
+# Hotel-management website
+
+Tools:
+  * Java Spring Boot
+  * SQL
+  * Bootstrap
